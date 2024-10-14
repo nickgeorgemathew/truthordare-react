@@ -4,10 +4,21 @@ import 'react-router-dom'
 import './app.scss'
 import Cards from './Cards'
 import Header from './Header'
-import { createBrowserRouter } from 'react-router-dom'
-import { BrowserRouter } from 'react-router-dom';
+
 import Random from './Random'
 import Custom from './Custom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+
+const Routes = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route path="/" exact component={Cards}/>
+      <Route path="/Custom" component={Custom} />
+      <Route path="/Random" component={Random} />
+    </Switch>
+  </BrowserRouter>
+);
 
 
 function App() {
@@ -15,9 +26,9 @@ function App() {
   
 
   return (
-    <div className=''>
+    <div className='' >
       <Header/>
-      <Cards/>
+      <Routes/>
       
     </div>
   )
