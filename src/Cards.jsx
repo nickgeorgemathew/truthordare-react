@@ -2,7 +2,7 @@ import {animate, motion} from 'framer-motion'
 
 import React from 'react'
 import Random from './Random.jsx'
-import Custom from './Custom.jsx'
+
 import { transform } from 'framer-motion'
 import { Link } from 'react-router-dom';
 

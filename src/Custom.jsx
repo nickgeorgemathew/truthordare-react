@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import {animate, motion} from 'framer-motion'
+import {animate, motion, spring} from 'framer-motion'
 import { transform } from 'framer-motion'
 import './Custom.css'
 import { textPath } from 'framer-motion/client'
@@ -31,8 +31,33 @@ const card_array=[
 
 
 
-function Custom() {
-  const [isFlipped, setIsFlipped] = useState(false);
+export default function Custom() {
+  let flipping =0
+  let flip
+  
+  // const [isFlipped, setIsFlipped] = useState(false);
+  const animate_open=()=>({
+    animate:{rotateY:180}
+
+  })
+  const animate_close=()=>({
+    animate:{rotateY:0}
+
+  })
+  const getAnimationProps = () => {
+    
+    return(
+      {...animate_open}
+    )
+    
+      };
+      const getAnimationProps2 = () => {
+    
+        return(
+          {...animate_close}
+        )
+        
+          };
   
   
   
@@ -45,24 +70,28 @@ function Custom() {
     };
     return (<motion.div
       className="flip-card"
-      onClick={() => setIsFlipped(!isFlipped)}
-      animate={isFlipped ? "visible" : "hidden"}
-      transition={{ duration: 2 }}
+      whileTap="visible"
+      
+      
+      transition={{ duration: 1 }}
       key={index}
     >
       <motion.div
         className="flip-card-inner"
         variants={flipCard}
-        animate={isFlipped ? "visible" : "hidden"}
+        whileTap="visible"
+        
+        
       >
         <motion.div className="flip-card-front">
           {/* front content */}
           <h2>Front</h2>
+          
         </motion.div>
         <motion.div className="flip-card-back">
           {/* back content */}
           <h2>Back</h2>
-          <p>This is the back content.</p>
+          <p>{item.description}</p>
         </motion.div>
       </motion.div>
     </motion.div>)
@@ -77,15 +106,14 @@ const inputanimation={
 }
 return (
   
-  <div className='flex justify-center items-center h-screen w-screen flex-wrap sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10'>
+  <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:-10}} transition={{duration:1,stiffness:spring}}className='flex justify-center items-center h-screen w-screen flex-wrap sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10'>
     <span><motion.input type='text'>
      </motion.input></span>
 
   {custom_cards}  
-  </div>
+  </motion.div>
 
 
 )
 }
 
-export default Custom
