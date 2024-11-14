@@ -7,28 +7,52 @@ import Header from './Header'
 
 import Random from './Random'
 import Custom from './Custom'
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 
-const Routes = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route path="/" exact component={Cards}/>
-      <Route path="/Custom" component={Custom} />
-      <Route path="/Random" component={Random} />
-    </Switch>
-  </BrowserRouter>
-);
+
+  
+
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+ 
+
+  // function displayCard(item) {
+  //   setDisplay("Card")
+    
+  // }
+  // function displayCustom(item) {
+  //   setDisplay("custom")
+    
+  // }
+  // function displayRandom(item) {
+  //   setDisplay("Random")
+    
+  // }
+  
   
 
   return (
+    
     <div className='' >
       <Header/>
-      <Routes/>
+      <Custom/>
+      {/* <BrowserRouter>
+    <Routes>
+      <Route path="/"  component={<Cards/>}/>
+      <Route path="/Custom" component={<Custom/>} />
+      <Route path="/Random" component={<Random/>} />
+    </Routes>
+  </BrowserRouter>
+      <Header/>
+      <Link to='/'>
+      Home
+      </Link> */}
+      
+   
+      
       
     </div>
   )

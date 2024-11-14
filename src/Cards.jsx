@@ -2,19 +2,19 @@ import {animate, motion} from 'framer-motion'
 
 import React from 'react'
 import Random from './Random.jsx'
-import Custom from './Custom.jsx'
+
 import { transform } from 'framer-motion'
 import { Link } from 'react-router-dom';
 
-const Navigation = () => (
-  <nav>
-    <ul>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/Custom">About</Link></li>
-      <li><Link to="/Random">Contact</Link></li>
-    </ul>
-  </nav>
-);
+// const Navigation = () => (
+//   <nav>
+//     <ul>
+//       <li><Link to="/">Home</Link></li>
+//       <li><Link to="/Custom">About</Link></li>
+//       <li><Link to="/Random">Contact</Link></li>
+//     </ul>
+//   </nav>
+// );
 const card_array=[
   {
    title:"Custom",
@@ -74,7 +74,7 @@ const card_array=[
               <button className='box-border border-black border-8 p-2' onClick={()=>{card_value(item.value)
              
             }}>
-             <Navigation/>
+             {/* <Navigation/> */}
               </button>
                 
 
