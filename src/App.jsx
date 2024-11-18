@@ -2,12 +2,13 @@ import { useState } from 'react'
 import 'react-router-dom'
 
 import './app.scss'
-import Cards from './Cards'
+
 import Header from './Header'
 
 import Random from './Random'
 import Custom from './Custom'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import Mainbody from './Mainbody'
 
 
 
@@ -38,7 +39,8 @@ function App() {
     
     <div className='' >
       <Header/>
-      <Custom/>
+      <Mainbody/>
+      {/* <Custom/> */}
       {/* <BrowserRouter>
     <Routes>
       <Route path="/"  component={<Cards/>}/>
