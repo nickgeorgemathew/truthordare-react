@@ -27,15 +27,38 @@ let players=[]
 
 
 function Mainbody() {
+  let player_count=0
   const input_ref=useRef('')
+  const input_num_ref= useRef(2)
+  
   function input_handle_player_name(params) {
-    players.push(input_ref.current.value)
-    alert(players);
+    
+    if(players.length+1<=player_count){
+      alert(players.length)
+      alert(player_count)
+      players.push(input_ref.current.value)
+      alert(players)
+
+    }
+     
+      
+    else if(players.length==null||input_ref.current.value==""){
+      alert("enter valid input")
+
+    }
+    else{
+      alert(" selected number filed")
+    }
+    
     // players.pop();
   
     
   }
   function input_handle_number(params) {
+   
+    player_count= input_num_ref.current.value
+    
+    
     
   }
   
@@ -87,8 +110,20 @@ function Mainbody() {
         
           <div className='grid grid-cols-2 gap-2'>
 
-          <motion.input type='number'  max={5} min={1}  placeholder='enter number of players'/>
-          <button className=' border-spacing-1 border-4' onClick={input_handle_number()}>
+          <motion.input
+           ref={input_num_ref}
+          
+          
+           type='number'  max={5} min={1}  placeholder='enter number of players'/>
+          <button className=' border-spacing-1 border-4' 
+          onClick={
+            ()=>{
+              player_count=input_num_ref.current.value;
+            }
+
+
+          }
+          >
             sdf
           </button>
           </div>
