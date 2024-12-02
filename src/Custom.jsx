@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState } from 'react'
 import {animate, motion, spring} from 'framer-motion'
 import { transform } from 'framer-motion'
@@ -27,41 +27,41 @@ const card_array=[
      }
 ]
 
-
-
+let dare=[]
+let truth=[]
 
 
 export default function Custom() {
-  let flipping =0
-  let flip
+  const input_truth=useRef()
+  const input_dare=useRef()
+  
+  // dare push to list function
+   function input_handle_dare(params) {
+    if (dare.length<=5) {
+      dare.push(input_dare.current.value)
+      
+    }
+    else{
+      alert("maximum dares entered")
+    }
+    
+   }
+  //  truth push to list function
+   function input_handle_truth(params) {
+    if (truth.length<=5) {
+      truth.push(input_truth.current.value)
+      
+    }
+    else{
+      alert("maximum truths entered")
+    }
+    
+   }
   
   // const [isFlipped, setIsFlipped] = useState(false);
-  const animate_open=()=>({
-    animate:{rotateY:180}
-
-  })
-  const animate_close=()=>({
-    animate:{rotateY:0}
-
-  })
-  const getAnimationProps = () => {
-    
-    return(
-      {...animate_open}
-    )
-    
-      };
-      const getAnimationProps2 = () => {
-    
-        return(
-          {...animate_close}
-        )
-        
-          };
+ 
   
-  
-  
-  
+  // card generation
   const custom_cards = card_array.map((item, index) => {
 
     const flipCard = {
@@ -92,6 +92,11 @@ export default function Custom() {
           {/* back content */}
           <h2>Back</h2>
           <p>{item.description}</p>
+          <button>
+            
+
+
+          </button>
         </motion.div>
       </motion.div>
     </motion.div>)
@@ -101,14 +106,42 @@ export default function Custom() {
         
  
 
-const inputanimation={
-  initial:{x:100,scale:5},
-}
+
 return (
   
   <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:-10}} transition={{duration:1,stiffness:spring}}className='flex justify-center items-center h-screen w-screen flex-wrap sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10'>
-    <span><motion.input type='text'>
-     </motion.input></span>
+    <div className='grid grid-cols-1 gap-5'>
+          {/* player dare input */}
+        
+          <div className='grid grid-cols-2 gap-2'>
+
+          <motion.input
+           ref={input_dare}
+          
+          
+           type='text' placeholder='enter 5 dares'/>
+          <button className=' border-spacing-1 border-4' 
+          onClick={input_handle_dare}>
+            sdf
+          </button>
+          </div>
+          {/* player truth input */}
+          <div className='grid grid-cols-2 gap-2'>
+          <motion.input 
+          ref={input_truth}
+          
+          type='text' placeholder='enter player names' />
+          <button className=' border-spacing-1 border-4'
+           onClick={input_handle_truth}>
+            sdf
+          </button>
+            </div>
+          
+          
+            
+
+        </div>
+  
 
   {custom_cards}  
   </motion.div>

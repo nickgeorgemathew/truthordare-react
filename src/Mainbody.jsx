@@ -72,7 +72,7 @@ function Mainbody() {
     
     return (<motion.div
       className="flip-card"
-      whileTap="visible"
+      whileHover="visible"
       
       
       transition={{ duration: 1 }}
@@ -81,7 +81,7 @@ function Mainbody() {
       <motion.div
         className="flip-card-inner"
         variants={flipCard}
-        whileTap="visible"
+        whileHover="visible"
         
         
       >
@@ -153,9 +153,12 @@ function Mainbody() {
 
         </div>
         
+        
         </div>
         
   )
 }
 
 export default Mainbody
+
+

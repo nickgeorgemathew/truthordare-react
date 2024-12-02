@@ -40,6 +40,7 @@ function App() {
     <div className='' >
       <Header/>
       <Mainbody/>
+      <Custom/>
       {/* <Custom/> */}
       {/* <BrowserRouter>
     <Routes>
