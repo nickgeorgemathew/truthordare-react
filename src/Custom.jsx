@@ -1,9 +1,15 @@
 import React, { useRef } from 'react'
+
 import { useState } from 'react'
 import {animate, motion, spring} from 'framer-motion'
+
 import { transform } from 'framer-motion'
 import './Custom.css'
+import { players } from './Mainbody'
 import { textPath } from 'framer-motion/client'
+import { useNavigate } from 'react-router-dom'
+
+   
 const card_array=[
   {
    title:"Custom",
@@ -32,6 +38,16 @@ let truth=[]
 
 
 export default function Custom() {
+  const navigate=useNavigate()
+
+
+
+
+
+
+
+
+
   const input_truth=useRef()
   const input_dare=useRef()
   
@@ -57,7 +73,32 @@ export default function Custom() {
     }
     
    }
+  // random player selector function
+  function player_selector(players) {
+    
+    intervalId = setTimeout(function() {
+          let randomName='';
+    let randomName2='';
+    if (players.length > 0) {
+    randomName=players[Math.floor(Math.random() * players.length)];
+
+    do{
+    randomName2=players[Math.floor(Math.random() * players.length)];
+    }
+    while(randomName!=randomName2);
+    return(
+     <>
+     `${randomName} to ${randomName2}`
+     </> 
+    )
   
+    }
+  }, 10);
+  }
+  function stop() {
+    clearInterval(intervalId);
+	
+}
   // const [isFlipped, setIsFlipped] = useState(false);
  
   
@@ -111,6 +152,7 @@ return (
   
   <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:-10}} transition={{duration:1,stiffness:spring}}className='flex justify-center items-center h-screen w-screen flex-wrap sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10'>
     <div className='grid grid-cols-1 gap-5'>
+      <button onClick={()=>{navigate('/')}}>home</button>
           {/* player dare input */}
         
           <div className='grid grid-cols-2 gap-2'>

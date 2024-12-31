@@ -7,8 +7,8 @@ import Header from './Header'
 
 import Random from './Random'
 import Custom from './Custom'
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import Mainbody from './Mainbody'
+import { BrowserRouter as Routers, Link, Route, Routes,createBrowserRouter } from 'react-router-dom';
+import Mainbody, { players } from './Mainbody'
 
 
 
@@ -33,31 +33,47 @@ function App() {
     
   // }
   
+  <Routers>
+  <Routes>
+    
+     
+      <Route path="/"  element={<Mainbody/>}/>
+      <Route path="/Custom" element={<Custom/>} />
+      <Route path="/Random" element={<Random/>} />
+    </Routes>
+    </Routers>
+  
   
 
   return (
+
+   
+    <>
+  
+    <Header/>
+    <Mainbody/>
     
-    <div className='' >
-      <Header/>
-      <Mainbody/>
-      <Custom/>
-      {/* <Custom/> */}
-      {/* <BrowserRouter>
-    <Routes>
-      <Route path="/"  component={<Cards/>}/>
-      <Route path="/Custom" component={<Custom/>} />
-      <Route path="/Random" component={<Random/>} />
-    </Routes>
-  </BrowserRouter>
-      <Header/>
-      <Link to='/'>
-      Home
-      </Link> */}
+    </>
+     // <Route>
+
+    // </Route>
+    
+    // // <div className=" " >
+    // //   <Header/>
+    // //   <Mainbody />
+    // //   <Custom players={players}/>
+    //   // {/* <Custom/> */}
+    //   // {/* <BrowserRouter>
+  // </BrowserRouter>
+  //     <Header/>
+  //     <Link to='/'>
+  //     Home
+  //     </Link> */}
       
    
       
       
-    </div>
+  //   </div>
   )
 }
 

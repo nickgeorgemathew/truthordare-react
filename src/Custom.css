@@ -1,3 +1,10 @@
+body{
+  background-image: url('C:\Users\Toshiba\Desktop\truthordare-react\src\bd988483-c890-4323-8428-b8266384b793.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .flip-card {
   position: relative;
   width: 200px;

@@ -4,6 +4,7 @@ import {animate, motion, spring} from 'framer-motion'
 import { transform } from 'framer-motion'
 
 import { textPath } from 'framer-motion/client'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -23,10 +24,11 @@ const choice_card_array=[
     
 ]
 
-let players=[]
+export let players=[]
 
 
 function Mainbody() {
+  const navigate=useNavigate()
   let player_count=0
   const input_ref=useRef('')
   const input_num_ref= useRef(2)
@@ -101,12 +103,13 @@ function Mainbody() {
                           // main body
   return (
     // main duv
-    <div className='items-center justify-center gap-2 flex flex-col text-black'>
+    <div className="  items-center justify-center gap-2 flex flex-col text-black">
         
         {/* player count and name input */}
+        <button onClick={()=>navigate("/Custom")} >dfgdfgdf</button>
         
         <div className='grid grid-cols-1 gap-5'>
-          {/* player number input */}
+          player number input
         
           <div className='grid grid-cols-2 gap-2'>
 
