@@ -34,14 +34,18 @@ function App() {
   // }
   
   <Routers>
+    
   <Routes>
     
      
       <Route path="/"  element={<Mainbody/>}/>
       <Route path="/Custom" element={<Custom/>} />
       <Route path="/Random" element={<Random/>} />
+      
     </Routes>
+    
     </Routers>
+    
   
   
 

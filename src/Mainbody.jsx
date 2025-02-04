@@ -1,10 +1,12 @@
 import React from 'react'
 import { useState,useRef } from 'react'
-import {animate, motion, spring} from 'framer-motion'
+import {animate, motion, spring,useAnimate,useAnimationControls} from 'framer-motion'
 import { transform } from 'framer-motion'
 
 import { textPath } from 'framer-motion/client'
 import { useNavigate } from 'react-router-dom'
+import { NULL } from 'sass'
+import Header from './Header'
 
 
 
@@ -28,6 +30,16 @@ export let players=[]
 
 
 function Mainbody() {
+  const [scope,animate]= useAnimate()
+   const click_rotate=()=>{
+    animate(scope.current,{rotateY: 180})
+    alert('animation')
+
+   }
+   const click_return=()=>{
+    animate(scope.current,{rotateY: 0})
+
+   }
   const navigate=useNavigate()
   let player_count=0
   const input_ref=useRef('')
@@ -36,20 +48,31 @@ function Mainbody() {
   function input_handle_player_name(params) {
     
     if(players.length+1<=player_count){
-      alert(players.length)
+      
+      if(input_ref.current.value==null||input_ref.current.value==""){
+        alert("enter valid input")
+  
+      }
+      else{
+        alert(players.length)
       alert(player_count)
       players.push(input_ref.current.value)
-      alert(players)
+      input_ref.current.value=""
+      alert(input_ref.current.value)
+
+      }
 
     }
      
       
-    else if(players.length==null||input_ref.current.value==""){
+    else if(players.length==null||input_ref.current.value==null||input_ref.current.value==""||input_num_ref.current.value=='')
+      {
       alert("enter valid input")
 
     }
     else{
-      alert(" selected number filed")
+      alert(" selected number filled")
+        input_ref.current.value=""
     }
     
     // players.pop();
@@ -74,7 +97,10 @@ function Mainbody() {
     
     return (<motion.div
       className="flip-card"
-      whileHover="visible"
+      animate={animate}
+      ref={scope}
+      // whileTap="visible"
+      onClick={click_rotate}
       
       
       transition={{ duration: 1 }}
@@ -83,16 +109,17 @@ function Mainbody() {
       <motion.div
         className="flip-card-inner"
         variants={flipCard}
-        whileHover="visible"
+        
+        // whileTap="visible"
         
         
       >
-        <motion.div className="flip-card-front">
+        <motion.div className="flip-card-front" >
           {/* front content */}
           <h2>Front</h2>
           
         </motion.div>
-        <motion.div className="flip-card-back">
+        <motion.div className="flip-card-back" onClick={click_return}>
           {/* back content */}
           <h2>Back</h2>
           <p>{item.description}</p>
@@ -103,6 +130,9 @@ function Mainbody() {
                           // main body
   return (
     // main duv
+    <>
+    
+    <Header/>
     <div className="  items-center justify-center gap-2 flex flex-col text-black">
         
         {/* player count and name input */}
@@ -158,6 +188,7 @@ function Mainbody() {
         
         
         </div>
+        </>
         
   )
 }
